@@ -1,0 +1,16 @@
+h3.current-question {
+    margin-bottom: 30px;
+}
+
+a.question-option {
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px;
+    background: rgb(16, 103, 153);
+    color: #FFF;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0 0 20px;
+    border-radius: 8px;
+}

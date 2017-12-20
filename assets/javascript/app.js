@@ -55,7 +55,7 @@ $(document).ready(function() {
 
             if (isFirstItem) {
                 // Puts first property in a new p element
-                questionItem = $("<h3>").text(questionItemContent);
+                questionItem = $("<h3>").text(questionItemContent).addClass("current-question");
                 isFirstItem = false;
             }
 
