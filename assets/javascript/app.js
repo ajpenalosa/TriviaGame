@@ -4,6 +4,7 @@ $(document).ready(function() {
     var correctAnswers = 0;
     var incorrectAnswers = 0;
     var unanswered = 0;
+    var questionNumber = 0;
 
     setTimeout(timeUp, 1000 * 30);
 
@@ -39,11 +40,18 @@ $(document).ready(function() {
 
     function newGame() {
 
+        nextQuestion();
+
+    }
+
+    function nextQuestion() {
+
+        $(".questions-wrapper").empty();
+
         // Creating reference to .questions-wrapper
         var questionsWrapper = $(".questions-wrapper");
             
         // Variables for the iterations
-        var questionNumber = 0;
         var questionItem;
         var isFirstItem = true;
 
@@ -61,20 +69,46 @@ $(document).ready(function() {
 
             else {
                 // Puts the rest of the properties in anchor tags
-                questionItem = $("<a>").text(questionItemContent).addClass("question-option");
+                questionItem = $("<a>").text(questionItemContent).addClass("question-option ").attr("value", questionProperty);
             }
     
             // Appends the p element to the questions wrapper
             questionsWrapper.append(questionItem);
 
-            console.log(questionItemContent);
-
           }
     }
 
+    // Creating on click function to start game and hides button
     $(".start-button").on("click", function() {
         $(this).hide();
         newGame();
     });
+    
+    // Creating on click function for question options
+    $(".questions-wrapper").on("click", ".question-option", function() {
 
+        // Grabs the value in the value attribute
+        var chosenAnswer = $(this).attr("value");
+
+        // If correct answer was chosen
+        if (chosenAnswer === "correctAnswer") {
+            console.log("YOU WIN!!");
+            correctAnswers++;
+            questionNumber++;
+            nextQuestion();
+        }
+
+        // If wrong answer was chosen
+        else {
+            console.log("YOU LOSE!!!");
+            incorrectAnswers++;
+            questionNumber++;
+            nextQuestion();
+        }
+
+        console.log("Number of correct answers: " + correctAnswers);
+        console.log("Number of incorrect answers: " + incorrectAnswers);
+        console.log(chosenAnswer);
+        
+    });
 });
