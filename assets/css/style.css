@@ -14,3 +14,7 @@ a.question-option {
     margin: 0 0 20px;
     border-radius: 8px;
 }
+
+a.question-option:hover {
+    background: #000;
+}
