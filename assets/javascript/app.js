@@ -1,12 +1,12 @@
 $(document).ready(function() {
 
-    var timeRemaining = 30;
     var correctAnswers = 0;
     var incorrectAnswers = 0;
     var unanswered = 0;
     var questionNumber = 0;
 
-    setTimeout(timeUp, 1000 * 30);
+    // Creating reference to .questions-wrapper
+    var questionsWrapper = $(".questions-wrapper");
 
     // Questions
 
@@ -93,22 +93,46 @@ $(document).ready(function() {
         }
     ];
 
-    function timeUp() {
-
-    }
-
     function newGame() {
 
         nextQuestion();
 
-    }
+    };
 
     function nextQuestion() {
 
         $(".questions-wrapper").empty();
 
-        // Creating reference to .questions-wrapper
-        var questionsWrapper = $(".questions-wrapper");
+        var timerWrapper = $("<div>").addClass("timer-wrapper").text("Time Remaining: ");
+        var timerDisplay = $("<span>").addClass("timer-display").text("30");
+
+        questionsWrapper.prepend(timerWrapper);
+        timerWrapper.append(timerDisplay);
+
+        // Timer
+    
+        //  Variable that will hold our setInterval that runs the timer
+        var intervalId;
+    
+        var timer = {
+    
+            timeRemaining: 30,
+    
+            start: function() {
+                intervalId = setInterval(timer.count, 1000);
+            },
+    
+            count: function() {
+                timer.timeRemaining--;
+                $(".timer-display").text(timer.timeRemaining);
+            }
+        };
+
+        timer.start();
+
+        if (timer.timeRemaining === 0) {
+            console.log("WAKE UP!!!");
+        }
             
         // Variables for the iterations
         var questionItem;
@@ -135,7 +159,7 @@ $(document).ready(function() {
             questionsWrapper.append(questionItem);
 
           }
-    }
+    };
 
     // Creating on click function to start game and hides button
     $(".start-button").on("click", function() {
