@@ -7,6 +7,11 @@ $(document).ready(function() {
 
     var correctAnswerHolder;
 
+    var timeOut = 1000 * 5;
+
+    var timedOut = false;
+    var isCorrect = false;
+
     // Creating reference to .questions-wrapper
     var questionsWrapper = $(".questions-wrapper");
 
@@ -136,13 +141,17 @@ $(document).ready(function() {
 
             // Go to time out screen once timer reaches 0
             if (timer.timeRemaining === 0) {
+                timedOut = true;
                 timer.stop();
-                timeOut();
+                outOfTime();
             }
         }
     };
 
     function nextQuestion() {
+
+        var timedOut = false;
+        var isCorrect = false;
 
         // Empties the question wrapper for each new question
         $(".questions-wrapper").empty();
@@ -187,7 +196,49 @@ $(document).ready(function() {
           correctAnswerHolder = $(".correctAnswer").text();
     };
 
-    function timeOut() {
+    function answerReveal() {
+
+        if (isCorrect) {
+
+            // Clears the screen
+            $(".questions-wrapper").empty();
+
+            // Creating out of time messages
+            var message = $("<div>").addClass("out-of-time").text("Correct!");
+            var correctAnswerDiv = $("<div>").addClass("correct-answer").text("You answered: " + correctAnswerHolder);
+        
+            // Append and prepend messages
+            questionsWrapper.append(message);
+            questionsWrapper.append(correctAnswerDiv);
+
+            // Screen times out and moves to next question
+            setTimeout(nextQuestion, timeOut);
+
+        } 
+        
+        else {
+
+            // Clears the screen
+            $(".questions-wrapper").empty();
+
+            // Creating out of time messages
+            var message = $("<div>").addClass("out-of-time").text("Sorry!");
+            var correctAnswerDiv = $("<div>").addClass("correct-answer").text("The correct answer was: " + correctAnswerHolder);
+        
+            // Append and prepend messages
+            questionsWrapper.append(message);
+            questionsWrapper.append(correctAnswerDiv);
+
+            // Screen times out and moves to next question
+            setTimeout(nextQuestion, timeOut);
+
+        }
+    };
+
+    function outOfTime() {
+
+        // Adds 1 to unanswered score
+        unanswered++;
 
         // Adds 1 to the question number
         questionNumber++;
@@ -195,17 +246,22 @@ $(document).ready(function() {
         // Clears the screen
         $(".questions-wrapper").empty();
 
-        // Creating out of time messsages
-        var outOfTimeMessage = $("<div>").addClass("out-of-time").text("Out of Time!");
+        // Creating out of time messages
+        var message = $("<div>").addClass("out-of-time").text("Out of Time!");
         var correctAnswerDiv = $("<div>").addClass("correct-answer").text("Sorry, the correct answer was: " + correctAnswerHolder);
     
         // Append and prepend messages
-        questionsWrapper.append(outOfTimeMessage);
+        questionsWrapper.append(message);
         questionsWrapper.append(correctAnswerDiv);
 
         // Screen times out and moves to next question
-        setTimeout(nextQuestion, 1000 * 5);
-    }
+        setTimeout(nextQuestion, timeOut);
+        
+    };
+
+    function gameOver() {
+        console.log("GAME OVER!!!");
+    };
 
     // Creating on click function to start game and hides button
     $(".start-button").on("click", function() {
@@ -221,20 +277,20 @@ $(document).ready(function() {
 
         // If correct answer was chosen
         if (chosenAnswer === "correctAnswer") {
-            console.log("YOU WIN!!");
+            isCorrect = true;
             correctAnswers++;
             questionNumber++;
             timer.stop();
-            nextQuestion();
+            answerReveal();
         }
 
         // If wrong answer was chosen
         else {
-            console.log("YOU LOSE!!!");
+            isCorrect = false;
             incorrectAnswers++;
             questionNumber++;
             timer.stop();
-            nextQuestion();
+            answerReveal();
         }
 
         console.log("Number of correct answers: " + correctAnswers);
