@@ -5,6 +5,8 @@ $(document).ready(function() {
     var unanswered = 0;
     var questionNumber = 0;
 
+    var correctAnswerHolder;
+
     // Creating reference to .questions-wrapper
     var questionsWrapper = $(".questions-wrapper");
 
@@ -101,19 +103,17 @@ $(document).ready(function() {
 
     // Timer
 
-    //  Variable that will hold our setInterval that runs the timer
+    var timeSetting = 5; // Amount of time for each question
     var intervalId;
-
     var timerRunning = false;
-
-    var timeSetting = 5;
 
     var timer = {
 
-        timeRemaining: timeSetting,
+        timeRemaining: timeSetting, // Amount of time for each question
 
         start: function() {
 
+            // Sets the interval if timer is not running
             if (!timerRunning) {
                 intervalId = setInterval(timer.count, 1000);
                 timerRunning = true;
@@ -122,28 +122,36 @@ $(document).ready(function() {
 
         stop: function() {
       
+            // Clears the timer and resets
             clearInterval(intervalId);
             timerRunning = false;
             timer.timeRemaining = timeSetting;
         },
 
         count: function() {
+
+            // Subtract one from time remaining
             timer.timeRemaining--;
             $(".timer-display").text(timer.timeRemaining);
 
+            // Go to time out screen once timer reaches 0
             if (timer.timeRemaining === 0) {
-                console.log("Wake up");
+                timer.stop();
+                timeOut();
             }
         }
     };
 
     function nextQuestion() {
 
+        // Empties the question wrapper for each new question
         $(".questions-wrapper").empty();
 
+        // Creating timer elements
         var timerWrapper = $("<div>").addClass("timer-wrapper").text("Time Remaining: ");
         var timerDisplay = $("<span>").addClass("timer-display").text(timer.timeRemaining);
     
+        // Append and prepend timer elements
         questionsWrapper.prepend(timerWrapper);
         timerWrapper.append(timerDisplay);
 
@@ -167,14 +175,37 @@ $(document).ready(function() {
 
             else {
                 // Puts the rest of the properties in anchor tags
-                questionItem = $("<a>").text(questionItemContent).addClass("question-option ").attr("value", questionProperty);
+                questionItem = $("<a>").text(questionItemContent).addClass("question-option " + questionProperty).attr("value", questionProperty);
             }
     
             // Appends the p element to the questions wrapper
             questionsWrapper.append(questionItem);
 
           }
+
+          // Putting the correct answer into a variable
+          correctAnswerHolder = $(".correctAnswer").text();
     };
+
+    function timeOut() {
+
+        // Adds 1 to the question number
+        questionNumber++;
+
+        // Clears the screen
+        $(".questions-wrapper").empty();
+
+        // Creating out of time messsages
+        var outOfTimeMessage = $("<div>").addClass("out-of-time").text("Out of Time!");
+        var correctAnswerDiv = $("<div>").addClass("correct-answer").text("Sorry, the correct answer was: " + correctAnswerHolder);
+    
+        // Append and prepend messages
+        questionsWrapper.append(outOfTimeMessage);
+        questionsWrapper.append(correctAnswerDiv);
+
+        // Screen times out and moves to next question
+        setTimeout(nextQuestion, 1000 * 5);
+    }
 
     // Creating on click function to start game and hides button
     $(".start-button").on("click", function() {
