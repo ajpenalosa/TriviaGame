@@ -99,40 +99,55 @@ $(document).ready(function() {
 
     };
 
+    // Timer
+
+    //  Variable that will hold our setInterval that runs the timer
+    var intervalId;
+
+    var timerRunning = false;
+
+    var timeSetting = 5;
+
+    var timer = {
+
+        timeRemaining: timeSetting,
+
+        start: function() {
+
+            if (!timerRunning) {
+                intervalId = setInterval(timer.count, 1000);
+                timerRunning = true;
+            }
+        },
+
+        stop: function() {
+      
+            clearInterval(intervalId);
+            timerRunning = false;
+            timer.timeRemaining = timeSetting;
+        },
+
+        count: function() {
+            timer.timeRemaining--;
+            $(".timer-display").text(timer.timeRemaining);
+
+            if (timer.timeRemaining === 0) {
+                console.log("Wake up");
+            }
+        }
+    };
+
     function nextQuestion() {
 
         $(".questions-wrapper").empty();
 
         var timerWrapper = $("<div>").addClass("timer-wrapper").text("Time Remaining: ");
-        var timerDisplay = $("<span>").addClass("timer-display").text("30");
-
+        var timerDisplay = $("<span>").addClass("timer-display").text(timer.timeRemaining);
+    
         questionsWrapper.prepend(timerWrapper);
         timerWrapper.append(timerDisplay);
 
-        // Timer
-    
-        //  Variable that will hold our setInterval that runs the timer
-        var intervalId;
-    
-        var timer = {
-    
-            timeRemaining: 30,
-    
-            start: function() {
-                intervalId = setInterval(timer.count, 1000);
-            },
-    
-            count: function() {
-                timer.timeRemaining--;
-                $(".timer-display").text(timer.timeRemaining);
-            }
-        };
-
         timer.start();
-
-        if (timer.timeRemaining === 0) {
-            console.log("WAKE UP!!!");
-        }
             
         // Variables for the iterations
         var questionItem;
@@ -178,6 +193,7 @@ $(document).ready(function() {
             console.log("YOU WIN!!");
             correctAnswers++;
             questionNumber++;
+            timer.stop();
             nextQuestion();
         }
 
@@ -186,6 +202,7 @@ $(document).ready(function() {
             console.log("YOU LOSE!!!");
             incorrectAnswers++;
             questionNumber++;
+            timer.stop();
             nextQuestion();
         }
 
