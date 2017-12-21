@@ -5,6 +5,8 @@ $(document).ready(function() {
     var unanswered = 0;
     var questionNumber = 0;
 
+    var lastQuestion = 10;
+
     var correctAnswerHolder;
 
     var timeOut = 1000 * 5;
@@ -204,15 +206,21 @@ $(document).ready(function() {
             $(".questions-wrapper").empty();
 
             // Creating out of time messages
-            var message = $("<div>").addClass("out-of-time").text("Correct!");
+            var message = $("<div>").addClass("message").text("Correct!");
             var correctAnswerDiv = $("<div>").addClass("correct-answer").text("You answered: " + correctAnswerHolder);
         
             // Append and prepend messages
             questionsWrapper.append(message);
             questionsWrapper.append(correctAnswerDiv);
 
-            // Screen times out and moves to next question
-            setTimeout(nextQuestion, timeOut);
+            if ( questionNumber === lastQuestion ) {
+                // Go to game over if last question
+                setTimeout(gameOver, timeOut);
+            }
+            else {
+                // Otherwise, move to next question
+                setTimeout(nextQuestion, timeOut);
+            }
 
         } 
         
@@ -222,15 +230,21 @@ $(document).ready(function() {
             $(".questions-wrapper").empty();
 
             // Creating out of time messages
-            var message = $("<div>").addClass("out-of-time").text("Sorry!");
+            var message = $("<div>").addClass("message").text("Sorry!");
             var correctAnswerDiv = $("<div>").addClass("correct-answer").text("The correct answer was: " + correctAnswerHolder);
         
             // Append and prepend messages
             questionsWrapper.append(message);
             questionsWrapper.append(correctAnswerDiv);
 
-            // Screen times out and moves to next question
-            setTimeout(nextQuestion, timeOut);
+            if ( questionNumber === lastQuestion ) {
+                // Go to game over if last question
+                setTimeout(gameOver, timeOut);
+            }
+            else {
+                // Otherwise, move to next question
+                setTimeout(nextQuestion, timeOut);
+            }
 
         }
     };
@@ -247,20 +261,41 @@ $(document).ready(function() {
         $(".questions-wrapper").empty();
 
         // Creating out of time messages
-        var message = $("<div>").addClass("out-of-time").text("Out of Time!");
+        var message = $("<div>").addClass("message").text("Out of Time!");
         var correctAnswerDiv = $("<div>").addClass("correct-answer").text("Sorry, the correct answer was: " + correctAnswerHolder);
     
         // Append and prepend messages
         questionsWrapper.append(message);
         questionsWrapper.append(correctAnswerDiv);
 
-        // Screen times out and moves to next question
-        setTimeout(nextQuestion, timeOut);
+        if ( questionNumber === lastQuestion ) {
+            // Go to game over if last question
+            setTimeout(gameOver, timeOut);
+        }
+        else {
+            // Otherwise, move to next question
+            setTimeout(nextQuestion, timeOut);
+        }
         
     };
 
     function gameOver() {
-        console.log("GAME OVER!!!");
+
+        // Clears the screen
+        $(".questions-wrapper").empty();
+
+        // Creating out of time messages
+        var message = $("<div>").addClass("message").text("All done, here's how you did!");
+        var correctDiv = $("<div>").addClass("correct-answer").text("Correct Answers: " + correctAnswers);
+        var incorrectDiv = $("<div>").addClass("correct-answer").text("Incorrect Answers: " + incorrectAnswers);
+        var unansweredDiv = $("<div>").addClass("correct-answer").text("Unanswered: " + unanswered);
+    
+        // Append and prepend messages
+        questionsWrapper.append(message);
+        questionsWrapper.append(correctDiv);
+        questionsWrapper.append(incorrectDiv);
+        questionsWrapper.append(unansweredDiv);
+
     };
 
     // Creating on click function to start game and hides button
