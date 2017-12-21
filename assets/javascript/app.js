@@ -5,7 +5,7 @@ $(document).ready(function() {
     var unanswered = 0;
     var questionNumber = 0;
 
-    var lastQuestion = 10;
+    var lastQuestion = 3;
 
     var correctAnswerHolder;
 
@@ -103,6 +103,12 @@ $(document).ready(function() {
     ];
 
     function newGame() {
+
+        // Resets game
+        correctAnswers = 0;
+        incorrectAnswers = 0;
+        unanswered = 0;
+        questionNumber = 0;
 
         nextQuestion();
 
@@ -207,10 +213,12 @@ $(document).ready(function() {
 
             // Creating out of time messages
             var message = $("<div>").addClass("message").text("Correct!");
-            var correctAnswerDiv = $("<div>").addClass("correct-answer").text("You answered: " + correctAnswerHolder);
+            var correctMessageDiv = $("<div>").addClass("correct-message").text("You answered:");
+            var correctAnswerDiv = $("<div>").addClass("correct-answer").text(correctAnswerHolder);
         
             // Append and prepend messages
             questionsWrapper.append(message);
+            questionsWrapper.append(correctMessageDiv);
             questionsWrapper.append(correctAnswerDiv);
 
             if ( questionNumber === lastQuestion ) {
@@ -229,12 +237,14 @@ $(document).ready(function() {
             // Clears the screen
             $(".questions-wrapper").empty();
 
-            // Creating out of time messages
+            // Creating messages
             var message = $("<div>").addClass("message").text("Sorry!");
-            var correctAnswerDiv = $("<div>").addClass("correct-answer").text("The correct answer was: " + correctAnswerHolder);
+            var correctMessageDiv = $("<div>").addClass("correct-message").text("The correct answer was:");
+            var correctAnswerDiv = $("<div>").addClass("correct-answer").text(correctAnswerHolder);
         
             // Append and prepend messages
             questionsWrapper.append(message);
+            questionsWrapper.append(correctMessageDiv);
             questionsWrapper.append(correctAnswerDiv);
 
             if ( questionNumber === lastQuestion ) {
@@ -260,12 +270,14 @@ $(document).ready(function() {
         // Clears the screen
         $(".questions-wrapper").empty();
 
-        // Creating out of time messages
+        // Creating messages
         var message = $("<div>").addClass("message").text("Out of Time!");
-        var correctAnswerDiv = $("<div>").addClass("correct-answer").text("Sorry, the correct answer was: " + correctAnswerHolder);
+        var correctMessageDiv = $("<div>").addClass("correct-message").text("Sorry, the correct answer was:");
+        var correctAnswerDiv = $("<div>").addClass("correct-answer").text(correctAnswerHolder);
     
         // Append and prepend messages
         questionsWrapper.append(message);
+        questionsWrapper.append(correctMessageDiv);
         questionsWrapper.append(correctAnswerDiv);
 
         if ( questionNumber === lastQuestion ) {
@@ -284,22 +296,26 @@ $(document).ready(function() {
         // Clears the screen
         $(".questions-wrapper").empty();
 
-        // Creating out of time messages
+        // Creating messages
         var message = $("<div>").addClass("message").text("All done, here's how you did!");
         var correctDiv = $("<div>").addClass("correct-answer").text("Correct Answers: " + correctAnswers);
         var incorrectDiv = $("<div>").addClass("correct-answer").text("Incorrect Answers: " + incorrectAnswers);
         var unansweredDiv = $("<div>").addClass("correct-answer").text("Unanswered: " + unanswered);
+
+        // Creating Play Again button
+        var playButton = $("<a>").addClass("btn btn-primary start-button").text("Play Again");
     
         // Append and prepend messages
         questionsWrapper.append(message);
         questionsWrapper.append(correctDiv);
         questionsWrapper.append(incorrectDiv);
         questionsWrapper.append(unansweredDiv);
+        questionsWrapper.append(playButton);
 
     };
 
     // Creating on click function to start game and hides button
-    $(".start-button").on("click", function() {
+    $(".questions-wrapper").on("click", ".start-button", function() {
         $(this).hide();
         newGame();
     });
