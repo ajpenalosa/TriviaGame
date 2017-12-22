@@ -5,7 +5,7 @@ $(document).ready(function() {
     var unanswered = 0;
     var questionNumber = 0;
 
-    var lastQuestion = 3;
+    var lastQuestion = 10;
 
     var correctAnswerHolder;
 
@@ -26,7 +26,8 @@ $(document).ready(function() {
             correctAnswer: "Einstein",
             optionB: "Darwin",
             optionC: "Edison",
-            optionD: "Newton" 
+            optionD: "Newton",
+            image: "einstein.jpg"
         },
         {
             // Question 2
@@ -34,7 +35,8 @@ $(document).ready(function() {
             optionA: "1.41",
             correctAnswer: "1.21",
             optionC: "1.31",
-            optionD: "1.51"
+            optionD: "1.51",
+            image: "gigawatts.jpg"
         },
         {
             // Question 3
@@ -42,7 +44,8 @@ $(document).ready(function() {
             optionA: "John Cusack",
             optionB: "Rob Lowe",
             correctAnswer: "Eric Stoltz",
-            optionD: "Matthew Broderick"
+            optionD: "Matthew Broderick",
+            image: "eric-stoltz.jpg"
         },
         {
             // Question 4
@@ -50,7 +53,8 @@ $(document).ready(function() {
             optionA: "Kerosene",
             correctAnswer: "Plutonium",
             optionC: "Diesel",
-            optionD: "Uranium"
+            optionD: "Uranium",
+            image: "plutonium.jpg"
         },
         {
             // Question 5
@@ -58,7 +62,8 @@ $(document).ready(function() {
             correctAnswer: "10:04 PM",
             optionB: "10:01 PM",
             optionC: "10:05 PM",
-            optionD: "10:11 PM"
+            optionD: "10:11 PM",
+            image: "clock-tower.jpg"
         },
         {
             // Question 6
@@ -66,7 +71,8 @@ $(document).ready(function() {
             correctAnswer: "But your kids are gonna love it.",
             optionB: "But you will be someday.",
             optionC: "But that's cool.",
-            optionD: "But you'll get there."
+            optionD: "But you'll get there.",
+            image: "but-your-kids-are-gonna-love-it.jpg"
         },
         {
             // Question 7
@@ -74,7 +80,8 @@ $(document).ready(function() {
             optionA: "The Hammers",
             correctAnswer: "The Pinheads",
             optionC: "The Pee Wees",
-            optionD: "Johnny B. Goode"
+            optionD: "Johnny B. Goode",
+            image: "the-pinheads.jpg"
         },
         {
             // Question 8
@@ -82,7 +89,8 @@ $(document).ready(function() {
             correctAnswer: "Calvin Klein",
             optionB: "Hugo Boss",
             optionC: "John Kennedy",
-            optionD: "Tom Cruise"
+            optionD: "Tom Cruise",
+            image: "calvin-klein.jpg"
         },
         {
             // Question 9
@@ -90,7 +98,8 @@ $(document).ready(function() {
             optionA: "Blow in the wind.",
             optionB: "Leave.",
             optionC: "Fall down.",
-            correctAnswer: "Get out of here."
+            correctAnswer: "Get out of here.",
+            image: "get-out-of-here.jpg"
         },
         {
             // Question 10
@@ -98,7 +107,8 @@ $(document).ready(function() {
             optionA: "Marilyn",
             optionB: "Allison",
             correctAnswer: "Jennifer",
-            optionD: "Anna"
+            optionD: "Anna",
+            image: "jennifer.jpg"
         }
     ];
 
@@ -156,6 +166,11 @@ $(document).ready(function() {
         }
     };
 
+    // Variables for the iterations
+    var currentQuestion;
+    var questionOption;
+    var questionImage;
+
     function nextQuestion() {
 
         var timedOut = false;
@@ -175,8 +190,7 @@ $(document).ready(function() {
         timer.start();
             
         // Variables for the iterations
-        var questionItem;
-        var isFirstItem = true;
+        var questionItem = 0;
 
         // Iterates through the properties of each question in the questions array
         for(var questionProperty in questions[questionNumber]) {
@@ -184,24 +198,40 @@ $(document).ready(function() {
             // Variable to hold the contents of each property
             var questionItemContent = questions[questionNumber][questionProperty];
 
-            if (isFirstItem) {
-                // Puts first property in a new p element
-                questionItem = $("<h3>").text(questionItemContent).addClass("current-question");
-                isFirstItem = false;
+            if ( questionItem === 0 ) {
+
+                // Puts the current question in an H3
+                currentQuestion = $("<h3>").text(questionItemContent).addClass("current-question");
+    
+                // Appends to the questions wrapper
+                questionsWrapper.append(currentQuestion);
+
             }
 
-            else {
-                // Puts the rest of the properties in anchor tags
-                questionItem = $("<a>").text(questionItemContent).addClass("question-option " + questionProperty).attr("value", questionProperty);
-            }
+            else if ( questionItem === 1 ||  questionItem === 2 ||  questionItem === 3 ||  questionItem === 4 ) {
+
+                // Puts the question options in anchor tags
+                questionOption = $("<a>").text(questionItemContent).addClass("question-option " + questionProperty).attr("value", questionProperty);
     
-            // Appends the p element to the questions wrapper
-            questionsWrapper.append(questionItem);
+                // Appends to the questions wrapper
+                questionsWrapper.append(questionOption);
+
+            }
+
+            else if ( questionItem === 5 ) {
+
+                // Puts the question options in anchor tags
+                questionImage = $("<img>").attr("src", "assets/images/" + questionItemContent);
+
+            }
+
+            questionItem++;
 
           }
 
           // Putting the correct answer into a variable
           correctAnswerHolder = $(".correctAnswer").text();
+
     };
 
     function answerReveal() {
@@ -220,6 +250,9 @@ $(document).ready(function() {
             questionsWrapper.append(message);
             questionsWrapper.append(correctMessageDiv);
             questionsWrapper.append(correctAnswerDiv);
+
+            // Appends image to the questions wrapper
+            questionsWrapper.append(questionImage);
 
             if ( questionNumber === lastQuestion ) {
                 // Go to game over if last question
@@ -246,6 +279,9 @@ $(document).ready(function() {
             questionsWrapper.append(message);
             questionsWrapper.append(correctMessageDiv);
             questionsWrapper.append(correctAnswerDiv);
+
+            // Appends image to the questions wrapper
+            questionsWrapper.append(questionImage);
 
             if ( questionNumber === lastQuestion ) {
                 // Go to game over if last question
@@ -279,6 +315,9 @@ $(document).ready(function() {
         questionsWrapper.append(message);
         questionsWrapper.append(correctMessageDiv);
         questionsWrapper.append(correctAnswerDiv);
+
+        // Appends image to the questions wrapper
+        questionsWrapper.append(questionImage);
 
         if ( questionNumber === lastQuestion ) {
             // Go to game over if last question
