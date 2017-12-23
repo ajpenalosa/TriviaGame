@@ -1,3 +1,122 @@
+/*-- Typography
+------------------------------*/
+
+@font-face {
+    font-family: BTTF;
+    src: url(../fonts/BTTF.ttf) format("truetype");
+}
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+
+/*-- Global
+------------------------------*/
+
+body {
+    background: url("../images/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+}
+
+/*-- Jumbotron
+------------------------------*/
+
+.jumbotron {
+    background: transparent;
+    padding-bottom: 0;
+}
+
+.logo {
+    display: inline-block;
+    font-family: BTTF, Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    color: #F7E928;
+}
+
+.back {
+    width: 400px;
+    font-size: 1.8em;
+    line-height: 1em;
+    vertical-align: middle;
+    margin-left: -0.7em;
+    background: -webkit-linear-gradient(#CB1921, #F7E928);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 2px #169CD2;
+}
+
+.arrow {
+    font-size: 1.5em;
+    margin: 0 0 0 -10px;
+    vertical-align: middle;
+    -webkit-text-stroke: 2px #169CD2;
+}
+
+.to-the {
+    float: left;
+    text-align: left;
+    font-size: 0.67em;
+    line-height: 0.9em;
+    padding-top: 2px;
+    padding-right: 10px;
+    background: -webkit-linear-gradient(top, #F7E928, #CB1921);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 2px #169CD2;
+}
+
+.to-the span {
+    font-size: 0.7em;
+    -webkit-text-stroke: 2px #169CD2;
+}
+
+.future {
+    float: left;
+    font-size: 1.37em;
+    line-height: 1em;
+    padding-top: 2px;
+    background: -webkit-linear-gradient(#F7E928, #CB1921);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 2px #169CD2;
+}
+
+.trivia {
+    text-align: right;
+    font-size: 0.5em;
+    margin-right: -1em;
+    color: #FFF;
+}
+
+/*-- User Interface
+------------------------------*/
+
+.game-wrapper {
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 30px;
+    border: 10px solid rgba(255, 255, 255, 0.1);
+    margin-top: 80px;
+    padding: 0 0 60px;
+}
+
+.questions-wrapper {
+    padding: 0 10%;
+}
+
+a.start-button {
+    font-size: 30px;
+    background: #D96423;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 0;
+    border-radius: 10px;
+    padding: 5px 30px;
+    letter-spacing: 1px;
+}
+
+a.start-button:hover {
+    background: rgb(168, 76, 26);
+}
+
 h3.current-question {
     margin-bottom: 30px;
 }

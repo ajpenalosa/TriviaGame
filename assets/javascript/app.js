@@ -126,7 +126,7 @@ $(document).ready(function() {
 
     // Timer
 
-    var timeSetting = 5; // Amount of time for each question
+    var timeSetting = 60; // Amount of time for each question
     var intervalId;
     var timerRunning = false;
 
