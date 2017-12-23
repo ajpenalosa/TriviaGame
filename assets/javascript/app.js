@@ -180,7 +180,7 @@ $(document).ready(function() {
         $(".questions-wrapper").empty();
 
         // Creating timer elements
-        var timerWrapper = $("<div>").addClass("timer-wrapper").text("Time Remaining: ");
+        var timerWrapper = $("<div>").addClass("timer-wrapper").html("<span class='time-remaining'>Time Remaining:</span>");
         var timerDisplay = $("<span>").addClass("timer-display").text(timer.timeRemaining);
     
         // Append and prepend timer elements
