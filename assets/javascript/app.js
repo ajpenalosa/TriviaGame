@@ -313,6 +313,7 @@ $(document).ready(function() {
         skipIntroButton.hide();
     };
 
+    // Animates body background color
     function bodyAnimation() {
 
         $("body").animate({
@@ -340,7 +341,8 @@ $(document).ready(function() {
 
     var timer = {
 
-        timeRemaining: timeSetting, // Amount of time for each question
+        // Amount of time for each question
+        timeRemaining: timeSetting,
 
         start: function() {
 
@@ -428,7 +430,7 @@ $(document).ready(function() {
 
             else if ( questionItem === 5 ) {
 
-                // Puts the question options in anchor tags
+                // Creates the image for the question
                 questionImage = $("<img>").attr("src", "assets/images/" + questionItemContent).addClass("img-responsive");
 
             }
@@ -519,7 +521,7 @@ $(document).ready(function() {
         var correctMessageDiv = $("<div>").addClass("correct-message").text("Sorry, the correct answer was:");
         var correctAnswerDiv = $("<div>").addClass("correct-answer").text(correctAnswerHolder);
     
-        // Append and prepend messages
+        // Append messages
         questionsWrapper.append(message);
         questionsWrapper.append(correctMessageDiv);
         questionsWrapper.append(correctAnswerDiv);
@@ -552,7 +554,7 @@ $(document).ready(function() {
         // Creating Play Again button
         var playButton = $("<a>").addClass("btn btn-primary start-button").text("Play Again").css({opacity: "1"});
     
-        // Append and prepend messages
+        // Append messages
         questionsWrapper.append(message);
         questionsWrapper.append(correctDiv);
         questionsWrapper.append(incorrectDiv);
@@ -594,6 +596,7 @@ $(document).ready(function() {
 
         console.log("Number of correct answers: " + correctAnswers);
         console.log("Number of incorrect answers: " + incorrectAnswers);
+        console.log("Number of unanswered: " + unanswered);
         console.log(chosenAnswer);
         
     });
