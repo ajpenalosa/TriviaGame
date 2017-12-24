@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     // Timer
     var timeSetting = 5; // Amount of time for each question
-    var timeOut = 1000 * 600; // Amount of time between questions
+    var timeOut = 1000 * 5; // Amount of time between questions
 
     var intervalId;
     var timerRunning = false;
@@ -116,6 +116,38 @@ $(document).ready(function() {
             image: "jennifer.jpg"
         }
     ];
+
+    // Logo Animation
+
+    setTimeout(logoBackAnimation, 1000);
+    setTimeout(logoToTheFutureAnimation, 2000);
+    setTimeout(logoTriviaAnimation, 3500);
+
+    function logoBackAnimation() {
+
+        $(".back").animate({
+            marginLeft: "-0.7em",
+            opacity: "1"
+        }, 1000);
+
+    };
+
+    function logoToTheFutureAnimation() {
+
+        $(".to-the-future").animate({
+            opacity: "1"
+        }, 1000);
+
+    };
+
+    function logoTriviaAnimation() {
+
+        $(".trivia").animate({
+            marginRight: "0.5em",
+            opacity: "1"
+        }, 500);
+
+    };
 
     function newGame() {
 
@@ -337,7 +369,7 @@ $(document).ready(function() {
         $(".questions-wrapper").empty();
 
         // Creating messages
-        var message = $("<div>").addClass("message").text("All done, here's how you did!");
+        var message = $("<div>").addClass("message").text("Here are your results!");
         var correctDiv = $("<div>").addClass("correct-answer").text("Correct Answers: " + correctAnswers);
         var incorrectDiv = $("<div>").addClass("correct-answer").text("Incorrect Answers: " + incorrectAnswers);
         var unansweredDiv = $("<div>").addClass("correct-answer").text("Unanswered: " + unanswered);
