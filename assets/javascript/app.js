@@ -127,10 +127,7 @@ $(document).ready(function() {
     var logoTrivia = $(".trivia");
 
     var gameWrapper = $(".game-wrapper");
-    var jumbotron = $(".jumbotron");
-
     var startButton = $(".start-button");
-
     var skipIntroButton = $(".skip-intro");
 
     setTimeout(logoBackAnimation, 1000 * 5);
@@ -138,7 +135,6 @@ $(document).ready(function() {
     setTimeout(logoTriviaAnimation, 1000 * 9);
 
     setTimeout(gameWrapperAnimation, 1000 * 10);
-    setTimeout(jumbotronAnimation, 1000 * 10);
 
     setTimeout(bodyAnimation, 1000 * 12);
     setTimeout(startButtonAnimation, 1000 * 12);
@@ -162,10 +158,6 @@ $(document).ready(function() {
 
         gameWrapper.css({
             "background-color": "rgba(0, 0, 0, 0.85)",
-            "border-color": "rgba(255, 255, 255, 0.1)"
-        });
-
-        jumbotron.css({
             "border-color": "rgba(255, 255, 255, 0.1)"
         });
 
@@ -217,14 +209,6 @@ $(document).ready(function() {
 
         gameWrapper.animate({
             "background-color": "rgba(0, 0, 0, 0.85)",
-            "border-color": "rgba(255, 255, 255, 0.1)"
-        }, 500);
-    };
-
-    // Animates jumbotron bottom border
-    function jumbotronAnimation() {
-
-        jumbotron.animate({
             "border-color": "rgba(255, 255, 255, 0.1)"
         }, 500);
     };
