@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+    var audio = new Audio("assets/audio/theme-song.mp3");
+    audio.play();
+
     var correctAnswers = 0;
     var incorrectAnswers = 0;
     var unanswered = 0;
@@ -10,7 +13,7 @@ $(document).ready(function() {
     var correctAnswerHolder;
 
     // Timer
-    var timeSetting = 5; // Amount of time for each question
+    var timeSetting = 30; // Amount of time for each question
     var timeOut = 1000 * 5; // Amount of time between questions
 
     var intervalId;
@@ -117,12 +120,19 @@ $(document).ready(function() {
         }
     ];
 
-    // Logo Animation
+    // Intro Animation
 
-    setTimeout(logoBackAnimation, 1000);
-    setTimeout(logoToTheFutureAnimation, 2000);
-    setTimeout(logoTriviaAnimation, 3500);
+    setTimeout(logoBackAnimation, 1000 * 5);
+    setTimeout(logoToTheFutureAnimation, 1000* 7);
+    setTimeout(logoTriviaAnimation, 1000 * 9);
 
+    setTimeout(gameWrapperAnimation, 1000 * 10);
+    setTimeout(jumbotronAnimation, 1000 * 10);
+
+    setTimeout(bodyAnimation, 1000 * 12);
+    setTimeout(startButtonAnimation, 1000 * 12);
+
+    // Animates Back
     function logoBackAnimation() {
 
         $(".back").animate({
@@ -132,6 +142,7 @@ $(document).ready(function() {
 
     };
 
+    // Animates To The Future
     function logoToTheFutureAnimation() {
 
         $(".to-the-future").animate({
@@ -140,6 +151,7 @@ $(document).ready(function() {
 
     };
 
+    // Animates Trivia
     function logoTriviaAnimation() {
 
         $(".trivia").animate({
@@ -149,6 +161,39 @@ $(document).ready(function() {
 
     };
 
+    // Animates Game Wrapper
+    function gameWrapperAnimation() {
+
+        $(".game-wrapper").animate({
+            "background-color": "rgba(0, 0, 0, 0.85)",
+            "border-color": "rgba(255, 255, 255, 0.1)"
+        }, 500);
+    };
+
+    // Animates jumbotron bottom border
+    function jumbotronAnimation() {
+
+        $(".jumbotron").animate({
+            "border-color": "rgba(255, 255, 255, 0.1)"
+        }, 500);
+    };
+
+    // Animates start button
+    function startButtonAnimation() {
+
+        $(".start-button").animate({
+            opacity: "1"
+        }, 500);
+    };
+
+    function bodyAnimation() {
+
+        $("body").animate({
+            "background-color": "rgba(0, 0, 0, 0)"
+        }, 500);
+    }
+
+    // Starts a new game
     function newGame() {
 
         // Resets game
@@ -389,6 +434,7 @@ $(document).ready(function() {
     // Creating on click function to start game and hides button
     $(".questions-wrapper").on("click", ".start-button", function() {
         $(this).hide();
+        audio.pause();
         newGame();
     });
     

@@ -16,10 +16,19 @@
 /*-- Global
 ------------------------------*/
 
+html,
 body {
+    height: 100%;
+}
+
+html {
     background: url("../images/background.jpg") no-repeat center center fixed;
     background-size: cover;
+}
+
+body {
     font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+    background-color: rgba(0, 0, 0, 1);
 }
 
 /*-- Jumbotron
@@ -31,7 +40,7 @@ body {
     background: transparent;
     margin: 0 auto;
     padding: 30px 0;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 3px solid rgba(255, 255, 255, 0);
     border-radius: 0;
 }
 
@@ -107,9 +116,9 @@ body {
 ------------------------------*/
 
 .game-wrapper {
-    background: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0);
     border-radius: 30px;
-    border: 10px solid rgba(255, 255, 255, 0.1);
+    border: 10px solid rgba(255, 255, 255, 0);
     margin-top: 60px;
     padding: 0 0 60px;
     color: #FFF;
@@ -128,6 +137,7 @@ a.start-button {
     border-radius: 10px;
     padding: 5px 30px;
     letter-spacing: 1px;
+    opacity: 0;
 }
 
 a.start-button:hover {
