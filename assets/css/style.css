@@ -137,7 +137,7 @@ a.skip-intro:hover {
     background-color: rgba(0, 0, 0, 0);
     border-radius: 30px;
     border: 10px solid rgba(255, 255, 255, 0);
-    margin-top: 60px;
+    margin: 60px 0;
     padding: 0 0 60px;
     color: #FFF;
 }
