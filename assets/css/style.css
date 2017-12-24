@@ -115,6 +115,24 @@ body {
 /*-- User Interface
 ------------------------------*/
 
+a.skip-intro {
+    width: 100px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    font-size: 16px;
+    text-align: center;
+    margin-left: -50px;
+    padding: 20px 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a.skip-intro:hover {
+    color: #D96423;
+}
+
 .game-wrapper {
     background-color: rgba(0, 0, 0, 0);
     border-radius: 30px;

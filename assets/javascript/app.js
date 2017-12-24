@@ -122,6 +122,17 @@ $(document).ready(function() {
 
     // Intro Animation
 
+    var logoBack = $(".back");
+    var logoToTheFuture = $(".to-the-future");
+    var logoTrivia = $(".trivia");
+
+    var gameWrapper = $(".game-wrapper");
+    var jumbotron = $(".jumbotron");
+
+    var startButton = $(".start-button");
+
+    var skipIntroButton = $(".skip-intro");
+
     setTimeout(logoBackAnimation, 1000 * 5);
     setTimeout(logoToTheFutureAnimation, 1000* 7);
     setTimeout(logoTriviaAnimation, 1000 * 9);
@@ -132,10 +143,50 @@ $(document).ready(function() {
     setTimeout(bodyAnimation, 1000 * 12);
     setTimeout(startButtonAnimation, 1000 * 12);
 
+    // Skip intro button
+    skipIntroButton.on("click", function() {
+
+        logoBack.css({
+            marginLeft: "-0.7em",
+            opacity: "1"
+        });
+
+        logoToTheFuture.css({
+            opacity: "1"
+        });
+
+        logoTrivia.css({
+            marginRight: "0.5em",
+            opacity: "1"
+        });
+
+        gameWrapper.css({
+            "background-color": "rgba(0, 0, 0, 0.85)",
+            "border-color": "rgba(255, 255, 255, 0.1)"
+        });
+
+        jumbotron.css({
+            "border-color": "rgba(255, 255, 255, 0.1)"
+        });
+
+        startButton.css({
+            opacity: "1"
+        });
+
+        $("body").css({
+            "background-color": "rgba(0, 0, 0, 0)"
+        });
+
+        audio.pause();
+
+        $(this).hide();
+
+    });
+
     // Animates Back
     function logoBackAnimation() {
 
-        $(".back").animate({
+        logoBack.animate({
             marginLeft: "-0.7em",
             opacity: "1"
         }, 1000);
@@ -145,7 +196,7 @@ $(document).ready(function() {
     // Animates To The Future
     function logoToTheFutureAnimation() {
 
-        $(".to-the-future").animate({
+        logoToTheFuture.animate({
             opacity: "1"
         }, 1000);
 
@@ -154,7 +205,7 @@ $(document).ready(function() {
     // Animates Trivia
     function logoTriviaAnimation() {
 
-        $(".trivia").animate({
+        logoTrivia.animate({
             marginRight: "0.5em",
             opacity: "1"
         }, 500);
@@ -164,7 +215,7 @@ $(document).ready(function() {
     // Animates Game Wrapper
     function gameWrapperAnimation() {
 
-        $(".game-wrapper").animate({
+        gameWrapper.animate({
             "background-color": "rgba(0, 0, 0, 0.85)",
             "border-color": "rgba(255, 255, 255, 0.1)"
         }, 500);
@@ -173,7 +224,7 @@ $(document).ready(function() {
     // Animates jumbotron bottom border
     function jumbotronAnimation() {
 
-        $(".jumbotron").animate({
+        jumbotron.animate({
             "border-color": "rgba(255, 255, 255, 0.1)"
         }, 500);
     };
@@ -181,9 +232,11 @@ $(document).ready(function() {
     // Animates start button
     function startButtonAnimation() {
 
-        $(".start-button").animate({
+        startButton.animate({
             opacity: "1"
         }, 500);
+
+        skipIntroButton.hide();
     };
 
     function bodyAnimation() {
