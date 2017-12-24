@@ -574,10 +574,10 @@ $(document).ready(function() {
     $(".questions-wrapper").on("click", ".question-option", function() {
 
         // Grabs the value in the value attribute
-        var chosenAnswer = $(this).attr("value");
+        var chosenAnswer = $(this).text();
 
         // If correct answer was chosen
-        if (chosenAnswer === "correctAnswer") {
+        if (chosenAnswer === correctAnswerHolder) {
             isCorrect = true;
             correctAnswers++;
             questionNumber++;
