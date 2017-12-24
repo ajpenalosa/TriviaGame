@@ -473,7 +473,7 @@ $(document).ready(function() {
         var unansweredDiv = $("<div>").addClass("correct-answer").text("Unanswered: " + unanswered);
 
         // Creating Play Again button
-        var playButton = $("<a>").addClass("btn btn-primary start-button").text("Play Again");
+        var playButton = $("<a>").addClass("btn btn-primary start-button").text("Play Again").css({opacity: "1"});
     
         // Append and prepend messages
         questionsWrapper.append(message);
