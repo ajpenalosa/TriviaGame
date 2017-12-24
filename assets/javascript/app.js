@@ -117,6 +117,96 @@ $(document).ready(function() {
             correctAnswer: "Jennifer",
             optionD: "Anna",
             image: "jennifer.jpg"
+        },
+        {
+            // Question 11
+            question: "Doc Brown's clocks are all set back by how much time?",
+            optionA: "30 minutes",
+            optionB: "1 hour",
+            optionC: "45 minutes",
+            correctAnswer: "25 minutes",
+            image: "docs-clocks.jpg"
+        },
+        {
+            // Question 12
+            question: "What is the name of the high school dance where much of the film's action takes place?",
+            correctAnswer: "Enchantment Under the Sea",
+            optionB: "Casino Royale",
+            optionC: "Sock Hop Boogie",
+            optionD: "Starry Night",
+            image: "enchantment-under-the-sea.jpg"
+        },
+        {
+            // Question 13
+            question: "What street does Doc live on in 1955?",
+            optionA: "Linda Vista Dr.",
+            correctAnswer: "Riverside Dr.",
+            optionC: "Oak Glen Rd.",
+            optionD: "Blossom Way",
+            image: "docs-house.jpg"
+        },
+        {
+            // Question 14
+            question: "What speed does the DeLorean have to hit in order to time travel?",
+            optionA: "89 mph",
+            optionB: "87 mph",
+            correctAnswer: "88 mph",
+            optionD: "86 mph",
+            image: "88mph.jpg"
+        },
+        {
+            // Question 15
+            question: "What is the name of the comic book Mr. Peabody's son is holding when they find the Delorean?",
+            optionA: "Dennis the Menace",
+            optionB: "Archie",
+            optionC: "Batman and Robin",
+            correctAnswer: "Tales From Space",
+            image: "tales-from-space.jpg"
+        },
+        {
+            // Question 16
+            question: "What song is playing when Marty first arrives in 1955?",
+            optionA: "\"Tutti Frutti\" - by Little Richard",
+            correctAnswer: "\"Mr. Sandman\" - by The Chordettes",
+            optionC: "\"Only You\" - by Platters",
+            optionD: "\"Ko Ko Mo\" - by Perry Como",
+            image: "mr-sandman.jpg"
+        },
+        {
+            // Question 17
+            question: "Where does Doc first show Marty his time machine in action?",
+            correctAnswer: "Twin Pines Mall",
+            optionB: "High School Parking Lot",
+            optionC: "In His Backyard",
+            optionD: "Under the Clock Tower",
+            image: "twin-pines-mall.jpg"
+        },
+        {
+            // Question 18
+            question: "Doc steals the fuel to run the time machine from terrorists from what country?",
+            optionA: "China",
+            optionB: "Iran",
+            correctAnswer: "Libya",
+            optionD: "Saudi Arabia",
+            image: "libyans.jpg"
+        },
+        {
+            // Question 19
+            question: "What planet does Marty say he's from when he visits George as Darth Vader?",
+            optionA: "Mars",
+            optionB: "Krypton",
+            correctAnswer: "Vulcan",
+            optionD: "Saturn",
+            image: "vulcan.jpg"
+        },
+        {
+            // Question 20
+            question: "When Marty McFly returns to 1985 what's different about Twin Pines Mall?",
+            optionA: "The JC Penny is closed",
+            optionB: "There's a Target instead of a JC Penny",
+            optionC: "It's not there",
+            correctAnswer: "The sign says \"Lone Pine Mall\"",
+            image: "lone-pine-mall.jpg"
         }
     ];
 
@@ -238,6 +328,9 @@ $(document).ready(function() {
         incorrectAnswers = 0;
         unanswered = 0;
         questionNumber = 0;
+
+        // Sorts the questions in random order
+        questions.sort(function(a,b){return 0.5 - Math.random()});
 
         nextQuestion();
 
