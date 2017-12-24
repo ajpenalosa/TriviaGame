@@ -9,7 +9,12 @@ $(document).ready(function() {
 
     var correctAnswerHolder;
 
-    var timeOut = 1000 * 5;
+    // Timer
+    var timeSetting = 5; // Amount of time for each question
+    var timeOut = 1000 * 600; // Amount of time between questions
+
+    var intervalId;
+    var timerRunning = false;
 
     var timedOut = false;
     var isCorrect = false;
@@ -126,10 +131,6 @@ $(document).ready(function() {
 
     // Timer
 
-    var timeSetting = 60; // Amount of time for each question
-    var intervalId;
-    var timerRunning = false;
-
     var timer = {
 
         timeRemaining: timeSetting, // Amount of time for each question
@@ -221,7 +222,7 @@ $(document).ready(function() {
             else if ( questionItem === 5 ) {
 
                 // Puts the question options in anchor tags
-                questionImage = $("<img>").attr("src", "assets/images/" + questionItemContent);
+                questionImage = $("<img>").attr("src", "assets/images/" + questionItemContent).addClass("img-responsive");
 
             }
 
