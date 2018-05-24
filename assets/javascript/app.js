@@ -311,7 +311,7 @@ $(document).ready(function() {
     // Animates Game Wrapper
     function gameWrapperAnimation() {
 
-        gameWrapper.animate({
+        gameWrapper.css({
             "background-color": "rgba(0, 0, 0, 0.85)",
             "border-color": "rgba(255, 255, 255, 0.1)"
         }, 500);
@@ -330,7 +330,7 @@ $(document).ready(function() {
     // Animates body background color
     function bodyAnimation() {
 
-        $("body").animate({
+        $("body").css({
             "background-color": "rgba(0, 0, 0, 0)"
         }, 500);
     }
