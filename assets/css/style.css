@@ -29,6 +29,7 @@ html {
 body {
     font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
     background-color: rgba(0, 0, 0, 1);
+    padding-top: 60px;
 }
 
 /*-- Jumbotron
@@ -126,6 +127,7 @@ a.skip-intro {
     box-sizing: border-box;
     text-decoration: none;
     cursor: pointer;
+    color: #FFF;
 }
 
 a.skip-intro:hover {
@@ -136,7 +138,6 @@ a.skip-intro:hover {
     background-color: rgba(0, 0, 0, 0);
     border-radius: 30px;
     border: 10px solid rgba(255, 255, 255, 0);
-    margin: 60px 0;
     padding: 0 0 60px;
     color: #FFF;
 }
