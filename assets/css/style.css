@@ -39,14 +39,23 @@ body {
 /*-- Start Wrapper
 ------------------------------*/
 
+.start-wrapper {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    text-align: center;
+}
+
+.start-wrapper h1 {
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
 a.play-game,
 a.play-game:not(:disabled):not(.disabled):active {
-    position: absolute;
-    top: 50%;
-    left: 50%;
     width: 300px;
-    margin-top: -40px;
-    margin-left: -150px;
     padding: 20px 30px;
     font-size: 30px;
     background: #D96423;
@@ -192,6 +201,7 @@ a.start-button {
     padding: 5px 30px;
     letter-spacing: 1px;
     opacity: 0;
+    display: none;
 }
 
 a.start-button:hover {
