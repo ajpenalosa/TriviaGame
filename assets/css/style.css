@@ -31,6 +31,9 @@ body {
     background-color: rgba(0, 0, 0, 1);
     padding-top: 60px;
     overflow-x: hidden;
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
 }
 
 /*-- Start Wrapper
@@ -170,6 +173,9 @@ a.skip-intro:hover {
     border: 10px solid rgba(255, 255, 255, 0);
     padding: 0 0 60px;
     color: #FFF;
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
 }
 
 .questions-wrapper {
