@@ -202,6 +202,7 @@ a.start-button:hover {
     padding: 0 4px 4px;
     border-radius: 6px;
     text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
 .time-remaining {
