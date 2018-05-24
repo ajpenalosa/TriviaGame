@@ -227,12 +227,12 @@ $(document).ready(function() {
 
         setTimeout(logoBackAnimation, 1000 * 5);
         setTimeout(logoToTheFutureAnimation, 1000* 7);
-        setTimeout(logoTriviaAnimation, 1000 * 9);
+        setTimeout(logoTriviaAnimation, 1000 * 8.5);
     
         setTimeout(gameWrapperAnimation, 1000 * 10);
     
-        setTimeout(bodyAnimation, 1000 * 12);
-        setTimeout(startButtonAnimation, 1000 * 12);
+        setTimeout(bodyAnimation, 1000 * 11.5);
+        setTimeout(startButtonAnimation, 1000 * 11.5);
 
     };
 
