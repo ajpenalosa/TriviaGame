@@ -30,6 +30,36 @@ body {
     font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
     background-color: rgba(0, 0, 0, 1);
     padding-top: 60px;
+    overflow-x: hidden;
+}
+
+/*-- Start Wrapper
+------------------------------*/
+
+a.play-game,
+a.play-game:not(:disabled):not(.disabled):active {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    margin-top: -40px;
+    margin-left: -150px;
+    padding: 20px 30px;
+    font-size: 30px;
+    background: #D96423;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 0;
+    border-radius: 10px;
+    letter-spacing: 1px;
+}
+
+a.play-game.btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255, 0);
+}
+
+a.play-game:hover {
+    background: rgb(168, 76, 26);
 }
 
 /*-- Jumbotron

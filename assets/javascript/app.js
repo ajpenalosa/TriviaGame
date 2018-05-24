@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
     var audio = new Audio("assets/audio/theme-song.mp3");
-    audio.play();
 
     var correctAnswers = 0;
     var incorrectAnswers = 0;
@@ -216,21 +215,36 @@ $(document).ready(function() {
     var logoToTheFuture = $(".to-the-future");
     var logoTrivia = $(".trivia");
 
+    var startWrapper = $(".start-wrapper");
+
     var gameWrapper = $(".game-wrapper");
     var startButton = $(".start-button");
     var skipIntroButton = $(".skip-intro");
 
-    setTimeout(logoBackAnimation, 1000 * 5);
-    setTimeout(logoToTheFutureAnimation, 1000* 7);
-    setTimeout(logoTriviaAnimation, 1000 * 9);
+    function introAnimation() {
 
-    setTimeout(gameWrapperAnimation, 1000 * 10);
+        audio.play();
 
-    setTimeout(bodyAnimation, 1000 * 12);
-    setTimeout(startButtonAnimation, 1000 * 12);
+        setTimeout(logoBackAnimation, 1000 * 5);
+        setTimeout(logoToTheFutureAnimation, 1000* 7);
+        setTimeout(logoTriviaAnimation, 1000 * 9);
+    
+        setTimeout(gameWrapperAnimation, 1000 * 10);
+    
+        setTimeout(bodyAnimation, 1000 * 12);
+        setTimeout(startButtonAnimation, 1000 * 12);
+
+    };
+
+    // Starts intro animation when you click on play button
+    $(".play-game").on("click", function() {
+        startWrapper.hide();
+        introAnimation();
+    });
 
     // Skip intro button
     skipIntroButton.on("click", function() {
+        startWrapper.hide();        
 
         logoBack.css({
             marginLeft: "-0.7em",
@@ -255,7 +269,7 @@ $(document).ready(function() {
             opacity: "1"
         });
 
-        $("body").css({
+        $(".main").css({
             "background-color": "rgba(0, 0, 0, 0)"
         });
 
