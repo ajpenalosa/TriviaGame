@@ -269,7 +269,7 @@ $(document).ready(function() {
             opacity: "1"
         });
 
-        $(".main").css({
+        $("body").css({
             "background-color": "rgba(0, 0, 0, 0)"
         });
 
@@ -401,7 +401,7 @@ $(document).ready(function() {
         var isCorrect = false;
 
         // Empties the question wrapper for each new question
-        $(".questions-wrapper").empty();
+        questionsWrapper.empty();
 
         // Creating timer elements
         var timerWrapper = $("<div>").addClass("timer-wrapper").html("<span class='time-remaining'>Time Remaining:</span>");
@@ -463,14 +463,14 @@ $(document).ready(function() {
         if (isCorrect) {
 
             // Clears the screen
-            $(".questions-wrapper").empty();
+            questionsWrapper.empty();
 
             // Creating out of time messages
             var message = $("<div>").addClass("message").text("Correct!");
             var correctMessageDiv = $("<div>").addClass("correct-message").text("You answered:");
             var correctAnswerDiv = $("<div>").addClass("correct-answer").text(correctAnswerHolder);
         
-            // Append and prepend messages
+            // Append messages to the questions wrapper
             questionsWrapper.append(message);
             questionsWrapper.append(correctMessageDiv);
             questionsWrapper.append(correctAnswerDiv);
@@ -492,14 +492,14 @@ $(document).ready(function() {
         else {
 
             // Clears the screen
-            $(".questions-wrapper").empty();
+            questionsWrapper.empty();
 
             // Creating messages
             var message = $("<div>").addClass("message").text("Sorry!");
             var correctMessageDiv = $("<div>").addClass("correct-message").text("The correct answer was:");
             var correctAnswerDiv = $("<div>").addClass("correct-answer").text(correctAnswerHolder);
         
-            // Append and prepend messages
+            // Append messages to the questions wrapper
             questionsWrapper.append(message);
             questionsWrapper.append(correctMessageDiv);
             questionsWrapper.append(correctAnswerDiv);
@@ -528,7 +528,7 @@ $(document).ready(function() {
         questionNumber++;
 
         // Clears the screen
-        $(".questions-wrapper").empty();
+        questionsWrapper.empty();
 
         // Creating messages
         var message = $("<div>").addClass("message").text("Out of Time!");
@@ -557,7 +557,7 @@ $(document).ready(function() {
     function gameOver() {
 
         // Clears the screen
-        $(".questions-wrapper").empty();
+        questionsWrapper.empty();
 
         // Creating messages
         var message = $("<div>").addClass("message").text("Here are your results!");
@@ -578,14 +578,14 @@ $(document).ready(function() {
     };
 
     // Creating on click function to start game and hides button
-    $(".questions-wrapper").on("click", ".start-button", function() {
+    questionsWrapper.on("click", ".start-button", function() {
         $(this).hide();
         audio.pause();
         newGame();
     });
     
     // Creating on click function for question options
-    $(".questions-wrapper").on("click", ".question-option", function() {
+    questionsWrapper.on("click", ".question-option", function() {
 
         // Grabs the value in the value attribute
         var chosenAnswer = $(this).text();
