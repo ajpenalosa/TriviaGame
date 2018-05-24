@@ -266,7 +266,8 @@ $(document).ready(function() {
         });
 
         startButton.css({
-            opacity: "1"
+            opacity: "1",
+            display: "inline-block"
         });
 
         $("body").css({
@@ -320,8 +321,9 @@ $(document).ready(function() {
     // Animates start button
     function startButtonAnimation() {
 
-        startButton.animate({
-            opacity: "1"
+        startButton.css({
+            opacity: "1",
+            display: "inline-block"
         }, 500);
 
         skipIntroButton.hide();

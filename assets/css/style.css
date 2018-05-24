@@ -201,6 +201,7 @@ a.start-button {
     padding: 5px 30px;
     letter-spacing: 1px;
     opacity: 0;
+    display: none;
 }
 
 a.start-button:hover {
